@@ -1,41 +1,20 @@
 import { Router, Request, Response } from "express";
-import { v4 as uuidv4 } from "uuid";
-import Quote from "../model/Quote";
+import QuotesRepository from "../repositories/QuotesRepositories";
 
 const quotesRoutes = Router();
 
-const quotes = [];
+const quotesRepository = new QuotesRepository();
 
 quotesRoutes.post("/", (request: Request, response: Response) => {
-  const {
-    origin,
-    destiny,
-    ticketGoing,
-    ticketBack,
-    goingDate,
-    backDate,
-    foodExpenses,
-    mobilityExpenses,
-    leisureExpenses,
-  } = request.body;
-
-  const quote = new Quote();
-  Object.assign(quote, {
-    id: uuidv4(),
-    origin,
-    destiny,
-    ticketGoing,
-    ticketBack,
-    goingDate,
-    backDate,
-    foodExpenses,
-    mobilityExpenses,
-    leisureExpenses,
+  quotesRepository.create({
+    ...request.body,
   });
-
-  quotes.push(quote);
-
   return response.status(201).send();
+});
+
+quotesRoutes.get("/", (_, response) => {
+  const all = quotesRepository.list();
+  return response.json(all);
 });
 
 export { quotesRoutes };
