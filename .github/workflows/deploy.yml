@@ -1,0 +1,56 @@
+# This workflow is for a Node.js application and automates deployment to Vercel.
+# It is triggered on every push to the `main` branch.
+
+name: Production Deploy
+
+# This section defines the events that trigger the workflow.
+# It's set to run on every push to the 'main' branch.
+on:
+  push:
+    branches:
+      - main
+  # Optionally, you can also trigger on pull requests for preview deployments
+  # pull_request:
+  #   branches:
+  #     - main
+
+# A workflow is made up of one or more jobs that can run sequentially or in parallel.
+jobs:
+  deploy:
+    # Specifies the type of runner (virtual machine) to run the job on.
+    runs-on: ubuntu-latest
+
+    # This block defines the environment variables for the entire job.
+    # The secrets are stored in your GitHub repository's settings.
+    env:
+      # This token is required for the Vercel CLI to authenticate.
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      # These IDs link your GitHub repository to your Vercel project and organization.
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+    # A job contains a sequence of tasks called steps.
+    steps:
+      # Step 1: Checkout the repository code.
+      # The actions/checkout@v4 action checks out your repository under $GITHUB_WORKSPACE.
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up the Node.js environment.
+      # This action installs a specific version of Node.js on the runner.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22" # You can change this to your preferred Node.js version.
+
+      # Step 3: Install Vercel CLI and project dependencies.
+      - name: Install Dependencies
+        run: |
+          npm install --global vercel@latest
+          npm install
+
+      # Step 4: Run the build command and deploy to Vercel.
+      # The 'vercel deploy' command uses the Vercel CLI to build and deploy your project.
+      # The --prod flag ensures it's a production deployment.
+      - name: Deploy to Vercel
+        run: vercel deploy --prod
