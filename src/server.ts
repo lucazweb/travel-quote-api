@@ -1,11 +1,11 @@
 import express from "express";
-import { quotesRoutes } from "./routes/quotes.routes";
+import { routes } from "./routes";
 
 const PORT = 4005;
 const app = express();
 
 app.use(express.json());
-app.use("/quotes", quotesRoutes);
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`running on port ${PORT}`);
