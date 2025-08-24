@@ -1,24 +1,19 @@
-import Quote from "../model/Quote";
+import Quote, { IQuoteDTO } from "../model/Quote";
 import { v4 as uuidv4 } from "uuid";
 
-interface IQuoteDTO {
-  id?: string;
-  origin: string;
-  destiny: string;
-  ticketGoing: number;
-  ticketBack: number;
-  goingDate: string;
-  backDate: string;
-  foodExpenses: number;
-  mobilityExpenses: number;
-  leisureExpenses: number;
-}
-
 class QuotesRepository {
-  quotes: Quote[];
+  private quotes: Quote[];
+  private static INSTANCE: QuotesRepository;
 
   constructor() {
     this.quotes = [];
+  }
+
+  public static getInstance(): QuotesRepository {
+    if (!QuotesRepository.INSTANCE) {
+      QuotesRepository.INSTANCE = new QuotesRepository();
+    }
+    return QuotesRepository.INSTANCE;
   }
 
   create(data: IQuoteDTO) {
