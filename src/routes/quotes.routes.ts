@@ -1,15 +1,14 @@
 import { Router, Request, Response } from "express";
-import { createQuoteController } from "../usecases/create-quote";
-import { listQuoteController } from "../usecases/list-quotes";
+import { CreateQuoteController } from "../usecases/create-quote/create-quote.controller";
+import { ListQuoteController } from "../usecases/list-quotes/list-quote-controller";
 
 const quotesRoutes = Router();
 
-quotesRoutes.post("/", (request: Request, response: Response) => {
-  createQuoteController.handle(request, response);
-});
+const createQuoteController = new CreateQuoteController();
+const listQuoteController = new ListQuoteController();
 
-quotesRoutes.get("/", (request, response) => {
-  listQuoteController.handle(request, response);
-});
+quotesRoutes.post("/", createQuoteController.handle);
+
+quotesRoutes.get("/", listQuoteController.handle);
 
 export { quotesRoutes };

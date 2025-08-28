@@ -2,8 +2,9 @@ import { Repository } from "typeorm";
 import Quote, { IQuoteDTO } from "../model/Quote";
 import { v4 as uuidv4 } from "uuid";
 import { AppDataSource } from "../database";
+import { IQuotesRepository } from "./IQuotesRepository";
 
-class QuotesRepository {
+class QuotesRepository implements IQuotesRepository {
   private repository: Repository<Quote>;
 
   constructor() {
@@ -25,4 +26,4 @@ class QuotesRepository {
   }
 }
 
-export default QuotesRepository;
+export { QuotesRepository };
