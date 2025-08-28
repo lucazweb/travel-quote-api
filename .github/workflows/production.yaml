@@ -48,6 +48,7 @@ jobs:
         run: |
           npm install --global vercel@latest
           npm install
+          npm run build
 
       # Step 4: Run the build command and deploy to Vercel.
       # The 'vercel deploy' command uses the Vercel CLI to build and deploy your project.

@@ -1,33 +1,27 @@
+import { Repository } from "typeorm";
 import Quote, { IQuoteDTO } from "../model/Quote";
 import { v4 as uuidv4 } from "uuid";
+import { AppDataSource } from "../database";
 
 class QuotesRepository {
-  private quotes: Quote[];
-  private static INSTANCE: QuotesRepository;
+  private repository: Repository<Quote>;
 
   constructor() {
-    this.quotes = [];
+    this.repository = AppDataSource.getRepository(Quote);
   }
 
-  public static getInstance(): QuotesRepository {
-    if (!QuotesRepository.INSTANCE) {
-      QuotesRepository.INSTANCE = new QuotesRepository();
-    }
-    return QuotesRepository.INSTANCE;
-  }
-
-  create(data: IQuoteDTO) {
-    const quote = new Quote();
-    Object.assign(quote, {
+  async create(data: IQuoteDTO): Promise<void> {
+    const quote = this.repository.create({
       id: uuidv4(),
       ...data,
     });
 
-    this.quotes.push(quote);
+    await this.repository.save(quote);
   }
 
-  list(): Quote[] {
-    return this.quotes;
+  async list(): Promise<Quote[]> {
+    const list = this.repository.find();
+    return list;
   }
 }
 

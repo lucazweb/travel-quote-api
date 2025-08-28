@@ -2,15 +2,21 @@
   "name": "trip-quote-api",
   "packageManager": "yarn@4.9.1",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.26",
     "uuid": "^11.1.0"
   },
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "build": "tsc",
-    "start": "node dist/src/server.js"
+    "start": "node dist/src/server.js",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "eslint": "^9.33.0",
     "globals": "^16.3.0",
