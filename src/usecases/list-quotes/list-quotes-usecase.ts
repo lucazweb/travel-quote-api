@@ -1,7 +1,12 @@
-import QuotesRepository from "../../repositories/QuotesRepositories";
+import { inject, injectable } from "tsyringe";
+import { QuotesRepository } from "../../repositories/QuotesRepositories";
 
+@injectable()
 class ListQuoteUsecase {
-  constructor(private quoteRepository: QuotesRepository) {}
+  constructor(
+    @inject("QuotesRepository")
+    private quoteRepository: QuotesRepository
+  ) {}
 
   execute() {
     return this.quoteRepository.list();

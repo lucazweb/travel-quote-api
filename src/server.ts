@@ -1,8 +1,10 @@
+import "reflect-metadata";
 import express from "express";
 import cors from "cors";
 import { routes } from "./routes";
 import { AppDataSource } from "./database";
 const PORT = 8080;
+import "./shared/container";
 
 AppDataSource.initialize()
   .then(() => {

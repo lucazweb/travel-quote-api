@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { CreateQuoteUsecase } from "./create-quote";
+import { container } from "tsyringe";
 
 class CreateQuoteController {
-  constructor(private createQuoteUsecase: CreateQuoteUsecase) {}
-
   handle(request: Request, response: Response) {
-    this.createQuoteUsecase.execute({ ...request.body });
+    const createQuoteUsecase = container.resolve(CreateQuoteUsecase);
+    createQuoteUsecase.execute({ ...request.body });
     return response.status(201).send();
   }
 }
