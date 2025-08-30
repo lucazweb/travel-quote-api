@@ -1,8 +1,9 @@
 import { Repository } from "typeorm";
-import Quote, { IQuoteDTO } from "../model/Quote";
+import { Quote } from "@entities/Quote";
 import { v4 as uuidv4 } from "uuid";
-import { AppDataSource } from "../database";
-import { IQuotesRepository } from "./IQuotesRepository";
+import { AppDataSource } from "@database/index";
+import { IQuotesRepository } from "../interfaces/IQuotesRepository";
+import { IQuoteDTO } from "../interfaces/IQuoteDTO";
 
 class QuotesRepository implements IQuotesRepository {
   private repository: Repository<Quote>;

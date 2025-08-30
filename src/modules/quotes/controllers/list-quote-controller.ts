@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListQuoteUsecase } from "./list-quotes-usecase";
+import { ListQuoteUsecase } from "@modules/quotes/usecases/list-quotes/list-quotes";
 import { container } from "tsyringe";
 
 class ListQuoteController {

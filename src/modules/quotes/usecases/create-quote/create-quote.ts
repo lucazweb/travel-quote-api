@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { IQuoteDTO } from "../../model/Quote";
-import { QuotesRepository } from "../../repositories/QuotesRepositories";
+import { QuotesRepository } from "@modules/quotes/repositories/QuotesRepositories";
+import { IQuoteDTO } from "@modules/quotes/interfaces";
 
 @injectable()
 class CreateQuoteUsecase {

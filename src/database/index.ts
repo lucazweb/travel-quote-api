@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import Quote from "../model/Quote";
+import { Quote } from "../entities/Quote";
 
 export const AppDataSource = new DataSource({
   type: "postgres",

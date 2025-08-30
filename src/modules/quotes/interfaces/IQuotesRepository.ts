@@ -1,4 +1,5 @@
-import Quote, { IQuoteDTO } from "../model/Quote";
+import { Quote } from "@entities/Quote";
+import { IQuoteDTO } from "./IQuoteDTO";
 
 interface IQuotesRepository {
   create: (data: IQuoteDTO) => Promise<void>;
