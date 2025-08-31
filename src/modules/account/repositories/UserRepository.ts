@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 import { User } from "@entities/User";
-import { IUserDTO, IUserRepository } from "./IUserRepository";
+import { IUserDTO, IUserRepository } from "../interfaces/IUserRepository";
 import { AppDataSource } from "@database/index";
 
 class UserRepository implements IUserRepository {

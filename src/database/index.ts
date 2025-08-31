@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Quote } from "../entities/Quote";
+import { User } from "@entities/User";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,5 +12,5 @@ export const AppDataSource = new DataSource({
   database: "tripquotedb",
   synchronize: false,
   migrations: ["src/database/migrations/**/*.ts"],
-  entities: [Quote],
+  entities: [User, Quote],
 });
