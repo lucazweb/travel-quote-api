@@ -1,5 +1,6 @@
 import { IUserDTO } from "@modules/account/interfaces/IUserRepository";
 import { UserRepository } from "@modules/account/repositories/UserRepository";
+import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
@@ -10,7 +11,8 @@ class CreateUserUsecase {
   ) {}
 
   async execute(data: IUserDTO) {
-    await this.repository.create(data);
+    const password = await hash(data.password, 8);
+    await this.repository.create({ ...data, password });
   }
 }
 

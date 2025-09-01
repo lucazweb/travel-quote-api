@@ -6,6 +6,7 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
+      "@errors/*": ["./errors/*"],
       "@entities/*": ["./entities/*"],
       "@database/*": ["./database/*"],
       "@modules/*": ["./modules/*"],
