@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateQuoteUsecase } from "./create-quote";
+import { CreateQuoteUsecase } from "@modules/quotes/usecases";
 import { container } from "tsyringe";
 
 class CreateQuoteController {
