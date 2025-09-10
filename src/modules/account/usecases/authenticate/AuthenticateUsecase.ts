@@ -3,6 +3,7 @@ import { AppError } from "@errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import { IUserRepository } from "@modules/account/interfaces/IUserRepository";
 
 interface IRequest {
   email: string;
@@ -23,7 +24,7 @@ class AuthenticateUsecase {
   // create jwt token
   constructor(
     @inject("UserRepository")
-    private repository: UserRepository
+    private repository: IUserRepository
   ) {}
 
   async execute(credentials: IRequest): Promise<IResponse> {
