@@ -26,7 +26,7 @@ describe("CreateQuoteUsecase tests", () => {
       leisureExpenses: 400,
     });
 
-    await createQuoteUsecase.execute(quote);
+    createQuoteUsecase.execute(quote);
     const quoteList = await quoteRepository.list();
     const createdQuote = quoteList.find((q) => q.goingDate === quote.goingDate);
     expect(createdQuote).toHaveProperty("id");

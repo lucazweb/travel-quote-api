@@ -7,7 +7,7 @@ interface IUserDTO {
 }
 
 interface IUserRepository {
-  create: (data: IUserDTO) => Promise<void>;
+  create: (data: IUserDTO) => Promise<User>;
   list: () => Promise<User[]>;
   findByEmail: (email: string) => Promise<User | null>;
   findById: (id: string) => Promise<User | null>;
