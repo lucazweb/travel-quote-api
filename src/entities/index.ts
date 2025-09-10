@@ -1,2 +1,2 @@
-export * from "./Quote";
-export * from "./User";
+export * from "../modules/quotes/entities/Quote";
+export * from "../modules/account/entities/User";

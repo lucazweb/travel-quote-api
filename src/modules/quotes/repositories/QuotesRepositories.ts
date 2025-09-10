@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
-import { Quote } from "@entities/Quote";
+import { Quote } from "@modules/quotes/entities/Quote";
 import { v4 as uuidv4 } from "uuid";
-import { AppDataSource } from "@database/index";
+import { AppDataSource } from "@datasource/index";
 import { IQuotesRepository } from "../interfaces/IQuotesRepository";
 import { IQuoteDTO } from "../interfaces/IQuoteDTO";
 

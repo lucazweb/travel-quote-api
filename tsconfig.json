@@ -6,7 +6,7 @@
       "@middlewares/*": ["./middlewares/*"],
       "@errors/*": ["./errors/*"],
       "@entities/*": ["./entities/*"],
-      "@database/*": ["./database/*"],
+      "@datasource/*": ["./datasource/*"],
       "@modules/*": ["./modules/*"],
       "@shared/*": ["./shared/*"],
       "@tests/*": ["./tests/*"]

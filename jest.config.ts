@@ -105,7 +105,7 @@ const config: Config = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     "^@entities/(.*)$": "<rootDir>/src/entities/$1",
-    "^@database/(.*)$": "<rootDir>/src/database/$1",
+    "^@datasource/(.*)$": "<rootDir>/src/datasource/$1",
     "^@modules/(.*)$": "<rootDir>/src/modules/$1",
     "^@shared/(.*)$": "<rootDir>/src/shared/$1",
     "^@errors/(.*)$": "<rootDir>/src/errors/$1",

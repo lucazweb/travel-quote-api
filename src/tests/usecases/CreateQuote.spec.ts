@@ -1,4 +1,4 @@
-import { Quote } from "@entities/Quote";
+import { Quote } from "@modules/quotes/entities/Quote";
 import { IQuotesRepository } from "@modules/quotes/interfaces";
 import { CreateQuoteUsecase } from "@modules/quotes/usecases";
 import { QuoteRepositoryInMemory } from "@tests/repositories/QuoteRepositoryInMemory";

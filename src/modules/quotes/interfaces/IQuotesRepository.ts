@@ -1,4 +1,4 @@
-import { Quote } from "@entities/Quote";
+import { Quote } from "@modules/quotes/entities/Quote";
 import { IQuoteDTO } from "./IQuoteDTO";
 
 interface IQuotesRepository {

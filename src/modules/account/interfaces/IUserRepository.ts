@@ -1,4 +1,4 @@
-import { User } from "@entities/User";
+import { User } from "@modules/account/entities/User";
 
 interface IUserDTO {
   name: string;
