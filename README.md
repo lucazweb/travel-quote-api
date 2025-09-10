@@ -1,4 +1,4 @@
-```markdown
+
 # ✈️ TripQuote API
 
 ### An API for travel quotations.
@@ -75,4 +75,3 @@ To access the travel quotation endpoints, you'll need a **JWT (JSON Web Token)**
 ---
 
 _md file Powered by Gemini_ 🍺🍺🍺
-```
