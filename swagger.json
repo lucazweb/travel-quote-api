@@ -1,0 +1,177 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RentalsAPI Documentation",
+    "description": "This is an API Rent",
+    "version": "1.0.0",
+    "contact": {
+      "email": "lucazweb.dev@gmail.com"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create user",
+        "description": "Create user registry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Error! User cannot be create.."
+          }
+        }
+      }
+    },
+    "/users/session": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create user session",
+        "description": "Create user session token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not allowed"
+          }
+        }
+      }
+    },
+    "/quotes": {
+      "post": {
+        "tags": ["Travel Quotations"],
+        "summary": "Create quote",
+        "description": "Create a travel quotation",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "origin": {
+                    "type": "string"
+                  },
+                  "destiny": {
+                    "type": "string"
+                  },
+                  "ticketGoing": {
+                    "type": "number"
+                  },
+                  "ticketBack": {
+                    "type": "number"
+                  },
+                  "goingDate": {
+                    "type": "string"
+                  },
+                  "backDate": {
+                    "type": "string"
+                  },
+                  "foodExpenses": {
+                    "type": "number"
+                  },
+                  "mobilityExpenses": {
+                    "type": "number"
+                  },
+                  "leisureExpenses": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Quotation cannot be create"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Travel Quotations"],
+        "summary": "List quotes",
+        "description": "List travel quotations",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "List of travel quotations"
+          }
+        }
+      }
+    }
+  }
+}
